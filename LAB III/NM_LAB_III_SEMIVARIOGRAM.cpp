@@ -1,3 +1,8 @@
+/*
+Implementing semivariogram analysis
+@Author : Kamlesh Kumar
+@Roll No. : 15MI31007
+*/
 #include<iostream>
 #include<algorithm>
 #include<vector>

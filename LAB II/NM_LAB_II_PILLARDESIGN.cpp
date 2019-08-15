@@ -1,5 +1,11 @@
+/*
+Implementing pillar design using Tributary Area Method
+@Author : Kamlesh Kumar
+@Roll No. : 15MI31007
+*/
+
 #include<iostream>
-#include<bits/stdc++.h> 
+#include<bits/stdc++.h>
 #include<numeric>
 #include<vector>
 #include<math.h>
