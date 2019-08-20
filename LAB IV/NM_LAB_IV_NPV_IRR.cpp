@@ -4,7 +4,7 @@
 #define EPSILON 0.01
 using namespace std;
 
-void getNPV(vector<vector<float>> data, float taxRate, float discountRate){
+void calculateNPV(vector<vector<float>> data, float taxRate, float discountRate){
   static int count=1;
   int year= data[0].size();
   float ratio;
@@ -16,7 +16,7 @@ void getNPV(vector<vector<float>> data, float taxRate, float discountRate){
     CF=((data[2][i]-data[0][i])*(1-(taxRate/100))-(data[1][i]));  // (revenue - operating cost)*(1-taxRate)-capitalCost = CashFlow (CF)
     NPV+=CF/pow((1+(discountRate/100)),i);
   }
-cout<<"NPV for mine "<<count<<" is"<<NPV<<endl;
+cout<<"NPV for mine "<<count<<" is INR "<<NPV<<"Cr"<<endl;
 count++;
 }
 
@@ -36,13 +36,12 @@ float getIRR(vector<vector<float>> data, float taxRate,float IRR){
 }
 
 
-
 void calculateIRR(vector<vector<float>> data, float taxRate,float IRR){
   static int i=1;
-  float n; // newton newtonRapshon derivative term
+  float n; // newton newtonRapshon derivative term ratio
   n = getIRR(data,taxRate,IRR);
+  // Newton Rapshon Method for calculating IRR
   while(abs(n)>EPSILON){
-  //cout<<"Value of n is: "<<n<<endl;
   n=getIRR(data,taxRate,IRR);
   IRR=IRR-n;
 }
@@ -51,7 +50,7 @@ i++;
 }
 
 int main(){
-  // declaration of data
+  // initialization of mine cashflow data
   std::vector<float> taxRate{33.20,33.80,35.50}; // tax rate of different mines
   std::vector<float> discountRate{15.5,14.5,15.0}; // discount rate of different mines
   vector<vector<vector<float>>> data{            // creating a 3-D array for data store
@@ -86,9 +85,10 @@ int main(){
 
   // Calculating NPV
   for(int i=0;i<data.size();i++){
-    getNPV(data[i],taxRate[i],discountRate[i]);
+    calculateNPV(data[i],taxRate[i],discountRate[i]);
   }
 
+// calculating IRR
   for(int i=0;i<data.size();i++){
     calculateIRR(data[i],taxRate[i],0.2);  // IRR =0.2 initial guess
   }
