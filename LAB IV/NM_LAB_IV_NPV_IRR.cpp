@@ -7,8 +7,6 @@ using namespace std;
 void calculateNPV(vector<vector<float>> data, float taxRate, float discountRate){
   static int count=1;
   int year= data[0].size();
-  float ratio;
-  float num=0;float denom=0;
   float NPV=0;
   float CF;
 
