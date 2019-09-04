@@ -86,13 +86,6 @@ for(int i=0; i<loop[2].size(); i++)
 }while(abs(dq0)>0.001 && abs(dq1)>0.001 && abs(dq2)>0.001);
 
 
-// cout<<"dq[0] : "<<dq0<<endl;
-// cout<<"dq[1] : "<<dq1<<endl;
-// cout<<"dq[2] : "<<dq2<<endl;
-
-
-
-
   // printing air resistance in each branch
   cout<<"Air resistance"<<endl;
   for(int i=0;i<R.size();i++){
@@ -105,17 +98,6 @@ cout<<"Air flow in difference branches"<<endl;
 for(int i=0;i<Q.size();i++){
   cout<<branchName[i]<<' '<<Q[i]<<endl;
 }
-
-
-
-
-
-
-
-
-
-
-
 
   return 0;
 }
